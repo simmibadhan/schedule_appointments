@@ -110,6 +110,41 @@ ALTER SEQUENCE appointment_as_id_seq OWNED BY appointment_as.id;
 
 
 --
+-- Name: appointments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE appointments (
+    id integer NOT NULL,
+    user_account_id integer,
+    schedule_id integer,
+    appointment_date date,
+    slot_id integer,
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: appointments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE appointments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: appointments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE appointments_id_seq OWNED BY appointments.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -225,12 +260,115 @@ ALTER SEQUENCE schedule_as_id_seq OWNED BY schedule_as.id;
 
 
 --
+-- Name: schedule_exceptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE schedule_exceptions (
+    id integer NOT NULL,
+    schedule_id integer,
+    exception_date date,
+    slot_id integer,
+    exception_type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: schedule_exceptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE schedule_exceptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: schedule_exceptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE schedule_exceptions_id_seq OWNED BY schedule_exceptions.id;
+
+
+--
+-- Name: schedules; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE schedules (
+    id integer NOT NULL,
+    user_account_location_id integer,
+    monday_slots integer[],
+    tuesday_slots integer[],
+    wednesday_slots integer[],
+    thursday_slots integer[],
+    friday_slots integer[],
+    saturday_slots integer[],
+    sunday_slots integer[],
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE schedules_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE schedules_id_seq OWNED BY schedules.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: slots; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE slots (
+    id integer NOT NULL,
+    start_time integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: slots_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE slots_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: slots_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE slots_id_seq OWNED BY slots.id;
 
 
 --
@@ -358,6 +496,13 @@ ALTER TABLE ONLY appointment_as ALTER COLUMN id SET DEFAULT nextval('appointment
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY appointments ALTER COLUMN id SET DEFAULT nextval('appointments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
@@ -373,6 +518,27 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 --
 
 ALTER TABLE ONLY schedule_as ALTER COLUMN id SET DEFAULT nextval('schedule_as_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schedule_exceptions ALTER COLUMN id SET DEFAULT nextval('schedule_exceptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schedules ALTER COLUMN id SET DEFAULT nextval('schedules_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY slots ALTER COLUMN id SET DEFAULT nextval('slots_id_seq'::regclass);
 
 
 --
@@ -413,6 +579,14 @@ ALTER TABLE ONLY appointment_as
 
 
 --
+-- Name: appointments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY appointments
+    ADD CONSTRAINT appointments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -434,6 +608,30 @@ ALTER TABLE ONLY locations
 
 ALTER TABLE ONLY schedule_as
     ADD CONSTRAINT schedule_as_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schedule_exceptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY schedule_exceptions
+    ADD CONSTRAINT schedule_exceptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY schedules
+    ADD CONSTRAINT schedules_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slots_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY slots
+    ADD CONSTRAINT slots_pkey PRIMARY KEY (id);
 
 
 --
@@ -520,4 +718,12 @@ INSERT INTO schema_migrations (version) VALUES ('20150128123150');
 INSERT INTO schema_migrations (version) VALUES ('20150128123208');
 
 INSERT INTO schema_migrations (version) VALUES ('20150128123323');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128124357');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128124412');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128124424');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128124430');
 
