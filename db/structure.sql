@@ -76,6 +76,74 @@ ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
 
 
 --
+-- Name: appointment_as; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE appointment_as (
+    id integer NOT NULL,
+    schedule_id integer,
+    status character varying(255),
+    start_time time without time zone,
+    end_time time without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: appointment_as_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE appointment_as_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: appointment_as_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE appointment_as_id_seq OWNED BY appointment_as.id;
+
+
+--
+-- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE events (
+    id integer NOT NULL,
+    schedule_id integer,
+    event_type character varying(255),
+    start_time time without time zone,
+    end_time time without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE events_id_seq OWNED BY events.id;
+
+
+--
 -- Name: locations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -109,6 +177,51 @@ CREATE SEQUENCE locations_id_seq
 --
 
 ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
+
+
+--
+-- Name: schedule_as; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE schedule_as (
+    id integer NOT NULL,
+    user_account_location_id integer,
+    monday_start_time time without time zone,
+    monday_end_time time without time zone,
+    tuesday_start_time time without time zone,
+    tuesday_end_time time without time zone,
+    wednesday_start_time time without time zone,
+    wednesday_end_time time without time zone,
+    thursday_start_time time without time zone,
+    thursday_end_time time without time zone,
+    friday_start_time time without time zone,
+    friday_end_time time without time zone,
+    saturday_start_time time without time zone,
+    saturday_end_time time without time zone,
+    sunday_start_time time without time zone,
+    sunday_end_time time without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: schedule_as_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE schedule_as_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: schedule_as_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE schedule_as_id_seq OWNED BY schedule_as.id;
 
 
 --
@@ -238,7 +351,28 @@ ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY appointment_as ALTER COLUMN id SET DEFAULT nextval('appointment_as_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schedule_as ALTER COLUMN id SET DEFAULT nextval('schedule_as_id_seq'::regclass);
 
 
 --
@@ -271,11 +405,35 @@ ALTER TABLE ONLY accounts
 
 
 --
+-- Name: appointment_as_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY appointment_as
+    ADD CONSTRAINT appointment_as_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY events
+    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: locations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY locations
     ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schedule_as_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY schedule_as
+    ADD CONSTRAINT schedule_as_pkey PRIMARY KEY (id);
 
 
 --
@@ -356,4 +514,10 @@ INSERT INTO schema_migrations (version) VALUES ('20150123103009');
 INSERT INTO schema_migrations (version) VALUES ('20150123103010');
 
 INSERT INTO schema_migrations (version) VALUES ('20150123103021');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128123150');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128123208');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128123323');
 
