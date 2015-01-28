@@ -112,109 +112,12 @@ ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
 
 
 --
--- Name: schedule_exceptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE schedule_exceptions (
-    id integer NOT NULL,
-    schedule_id integer,
-    date timestamp without time zone,
-    slot_id integer,
-    status character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: schedule_exceptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE schedule_exceptions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: schedule_exceptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE schedule_exceptions_id_seq OWNED BY schedule_exceptions.id;
-
-
---
--- Name: schedules; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE schedules (
-    id integer NOT NULL,
-    user_account_location_id integer,
-    schedule_details hstore,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE schedules_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE schedules_id_seq OWNED BY schedules.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
-
-
---
--- Name: slots; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE slots (
-    id integer NOT NULL,
-    start_time timestamp without time zone,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: slots_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE slots_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: slots_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE slots_id_seq OWNED BY slots.id;
 
 
 --
@@ -342,27 +245,6 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schedule_exceptions ALTER COLUMN id SET DEFAULT nextval('schedule_exceptions_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY schedules ALTER COLUMN id SET DEFAULT nextval('schedules_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY slots ALTER COLUMN id SET DEFAULT nextval('slots_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY user_account_locations ALTER COLUMN id SET DEFAULT nextval('user_account_locations_id_seq'::regclass);
 
 
@@ -394,30 +276,6 @@ ALTER TABLE ONLY accounts
 
 ALTER TABLE ONLY locations
     ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
-
-
---
--- Name: schedule_exceptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY schedule_exceptions
-    ADD CONSTRAINT schedule_exceptions_pkey PRIMARY KEY (id);
-
-
---
--- Name: schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY schedules
-    ADD CONSTRAINT schedules_pkey PRIMARY KEY (id);
-
-
---
--- Name: slots_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY slots
-    ADD CONSTRAINT slots_pkey PRIMARY KEY (id);
 
 
 --
