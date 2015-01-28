@@ -346,7 +346,7 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE slots (
     id integer NOT NULL,
-    start_time integer,
+    start_time time without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -724,6 +724,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150128124357');
 INSERT INTO schema_migrations (version) VALUES ('20150128124412');
 
 INSERT INTO schema_migrations (version) VALUES ('20150128124424');
+
+INSERT INTO schema_migrations (version) VALUES ('20150128124425');
 
 INSERT INTO schema_migrations (version) VALUES ('20150128124430');
 
