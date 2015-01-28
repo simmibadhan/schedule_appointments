@@ -40,6 +40,7 @@ namespace :db do
     puts Time.current
   end #task
 
+
   desc "Populate User Profile Tables - users, user_accounts, locations, user_account_locations"
   task :populate_user_profile_tables => :environment do
     puts Time.current
@@ -77,6 +78,122 @@ namespace :db do
       puts "User Data Populated"
       puts "user_id = " + user.id.to_s
       
+    rescue StandardError => e
+      puts e
+    end
+
+    puts "------------------------------------------------------"
+    puts "Rake Task Ended...."
+    puts Time.current
+  end #task
+
+
+  desc "Populate Slots Table"
+  task :populate_slots_table => :environment do
+    puts Time.current
+    puts "Rake Task Started...."
+    puts "------------------------------------------------------"
+
+    begin
+      Slot.destroy_all
+      Slot.create([
+        {
+          :id => 1,
+          :start_time => "00:00"
+        },
+        {
+          :id => 2,
+          :start_time => "00:30"
+        },
+        {
+          :id => 3,
+          :start_time => "01:00"
+        },
+        {
+          :id => 4,
+          :start_time => "01:30"
+        },
+        {
+          :id => 5,
+          :start_time => "02:00"
+        },
+        {
+          :id => 6,
+          :start_time => "02:30"
+        },
+        {
+          :id => 7,
+          :start_time => "03:00"
+        },
+        {
+          :id => 8,
+          :start_time => "03:30"
+        },
+        {
+          :id => 9,
+          :start_time => "04:00"
+        },
+        {
+          :id => 10,
+          :start_time => "04:30"
+        },
+        {
+          :id => 11,
+          :start_time => "05:00"
+        },
+        {
+          :id => 12,
+          :start_time => "05:30"
+        },
+        {
+          :id => 13,
+          :start_time => "06:00"
+        },
+        {
+          :id => 14,
+          :start_time => "06:30"
+        },
+        {
+          :id => 15,
+          :start_time => "07:00"
+        },
+        {
+          :id => 16,
+          :start_time => "07:30"
+        },
+        {
+          :id => 17,
+          :start_time => "08:00"
+        },
+        {
+          :id => 18,
+          :start_time => "08:30"
+        },
+        {
+          :id => 19,
+          :start_time => "09:00"
+        },
+        {
+          :id => 20,
+          :start_time => "09:30"
+        },
+        {
+          :id => 21,
+          :start_time => "10:00"
+        },
+        {
+          :id => 22,
+          :start_time => "10:30"
+        },
+        {
+          :id => 23,
+          :start_time => "11:00"
+        },
+        {
+          :id => 24,
+          :start_time => "11:30"
+        }
+      ])
     rescue StandardError => e
       puts e
     end
