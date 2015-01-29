@@ -192,6 +192,102 @@ namespace :db do
         {
           :id => 24,
           :start_time => "11:30"
+        },
+        {
+          :id => 25,
+          :start_time => "12:00"
+        },
+        {
+          :id => 26,
+          :start_time => "12:30"
+        },
+        {
+          :id => 27,
+          :start_time => "13:00"
+        },
+        {
+          :id => 28,
+          :start_time => "13:30"
+        },
+        {
+          :id => 29,
+          :start_time => "14:00"
+        },
+        {
+          :id => 30,
+          :start_time => "14:30"
+        },
+        {
+          :id => 31,
+          :start_time => "15:00"
+        },
+        {
+          :id => 32,
+          :start_time => "15:30"
+        },
+        {
+          :id => 33,
+          :start_time => "16:00"
+        },
+        {
+          :id => 34,
+          :start_time => "16:30"
+        },
+        {
+          :id => 35,
+          :start_time => "17:00"
+        },
+        {
+          :id => 36,
+          :start_time => "17:30"
+        },
+        {
+          :id => 37,
+          :start_time => "18:00"
+        },
+        {
+          :id => 38,
+          :start_time => "18:30"
+        },
+        {
+          :id => 39,
+          :start_time => "19:00"
+        },
+        {
+          :id => 40,
+          :start_time => "19:30"
+        },
+        {
+          :id => 41,
+          :start_time => "20:00"
+        },
+        {
+          :id => 42,
+          :start_time => "20:30"
+        },
+        {
+          :id => 43,
+          :start_time => "21:00"
+        },
+        {
+          :id => 44,
+          :start_time => "21:30"
+        },
+        {
+          :id => 45,
+          :start_time => "22:00"
+        },
+        {
+          :id => 46,
+          :start_time => "22:30"
+        },
+        {
+          :id => 47,
+          :start_time => "23:00"
+        },
+        {
+          :id => 48,
+          :start_time => "23:30"
         }
       ])
     rescue StandardError => e

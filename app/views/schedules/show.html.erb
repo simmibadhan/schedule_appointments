@@ -1,0 +1,64 @@
+<h4>Schedule for  <%=@user.name%></h4>
+<!-- Monday -->
+<%if @monday_slots.present?%>
+	<p>
+		Monday<br>
+		<%@monday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Tuesday -->
+<%if @tuesday_slots.present?%>
+	<p>
+		Tuesday<br>
+		<%@tuesday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Wednesday -->
+<%if @wednesday_slots.present?%>
+	<p>
+		Wednesday<br>
+		<%@wednesday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Thursday -->
+<%if @thursday_slots.present?%>
+	<p>
+		Thursday<br>
+		<%@thursday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Friday -->
+<%if @friday_slots.present?%>
+	<p>
+		Friday<br>
+		<%@friday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Saturday -->
+<%if @saturday_slots.present?%>
+	<p>
+		Saturday<br>
+		<%@saturday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
+<!-- Sunday -->
+<%if @sunday_slots.present?%>
+	<p>
+		Sunday<br>
+		<%@sunday_slots.each do |slot|%>
+			<%=slot.start_time.strftime("%H:%M")%> <br> 
+		<%end%>
+	</p>
+<%end%>
