@@ -154,6 +154,20 @@ CREATE TABLE events (
     event_type character varying(255),
     start_time time without time zone,
     end_time time without time zone,
+    monday_start_time time without time zone,
+    monday_end_time time without time zone,
+    tuesday_start_time time without time zone,
+    tuesday_end_time time without time zone,
+    wednesday_start_time time without time zone,
+    wednesday_end_time time without time zone,
+    thursday_start_time time without time zone,
+    thursday_end_time time without time zone,
+    friday_start_time time without time zone,
+    friday_end_time time without time zone,
+    saturday_start_time time without time zone,
+    saturday_end_time time without time zone,
+    sunday_start_time time without time zone,
+    sunday_end_time time without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -687,6 +701,8 @@ SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('1');
 
+INSERT INTO schema_migrations (version) VALUES ('2');
+
 INSERT INTO schema_migrations (version) VALUES ('20140828012909');
 
 INSERT INTO schema_migrations (version) VALUES ('20140828012911');
@@ -728,4 +744,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150128124424');
 INSERT INTO schema_migrations (version) VALUES ('20150128124425');
 
 INSERT INTO schema_migrations (version) VALUES ('20150128124430');
+
+INSERT INTO schema_migrations (version) VALUES ('3');
 
