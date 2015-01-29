@@ -13,5 +13,8 @@
 			<%=ual.location.country%><br>
 			<%=ual.location.zipcode%>
 		</p>
+		<%if ual.schedule_a.present?%>
+			<%=link_to "Schedule V1.1", schedule_a_path(ual.schedule_a)%>
+		<%end%>
 	<%end%>
 <%end%>
