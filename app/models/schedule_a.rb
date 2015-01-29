@@ -3,4 +3,8 @@ class ScheduleA < ActiveRecord::Base
 
 	has_many :appointment_as
 	has_many :events
+
+	def unavailable_events
+		self.events.where(:event_type=>"UNAVAILABLE")
+	end
 end

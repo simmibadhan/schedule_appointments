@@ -1,1 +1,106 @@
-Schedulea
+<h4>Schedule for  <%=@user.name%></h4>
+<!-- Monday -->
+<%if @schedule.monday_start_time and @schedule.monday_end_time%>
+	<p>
+		Monday<br>
+		<%=@schedule.monday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.monday_start_time and event.monday_end_time%>
+					- <%=event.monday_start_time.strftime("%H:%M")%>, <%=event.monday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.monday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Tuesday -->
+<%if @schedule.tuesday_start_time and @schedule.tuesday_end_time%>
+	<p>
+		Tuesday<br>
+		<%=@schedule.tuesday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.tuesday_start_time and event.tuesday_end_time%>
+					- <%=event.tuesday_start_time.strftime("%H:%M")%>, <%=event.tuesday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.tuesday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Wednesday -->
+<%if @schedule.wednesday_start_time and @schedule.wednesday_end_time%>
+	<p>
+		Wednesday<br>
+		<%=@schedule.wednesday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.wednesday_start_time and event.wednesday_end_time%>
+					- <%=event.wednesday_start_time.strftime("%H:%M")%>, <%=event.wednesday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.wednesday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Thursday -->
+<%if @schedule.thursday_start_time and @schedule.thursday_end_time%>
+	<p>
+		Thursday<br>
+		<%=@schedule.thursday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.thursday_start_time and event.thursday_end_time%>
+					- <%=event.thursday_start_time.strftime("%H:%M")%>, <%=event.thursday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.thursday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Friday -->
+<%if @schedule.friday_start_time and @schedule.friday_end_time%>
+	<p>
+		Friday<br>
+		<%=@schedule.friday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.friday_start_time and event.friday_end_time%>
+					- <%=event.friday_start_time.strftime("%H:%M")%>, <%=event.friday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.friday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Saturday -->
+<%if @schedule.saturday_start_time and @schedule.saturday_end_time%>
+	<p>
+		Saturday<br>
+		<%=@schedule.saturday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.saturday_start_time and event.saturday_end_time%>
+					- <%=event.saturday_start_time.strftime("%H:%M")%>, <%=event.saturday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.saturday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>
+<!-- Sunday -->
+<%if @schedule.sunday_start_time and @schedule.sunday_end_time%>
+	<p>
+		Sunday<br>
+		<%=@schedule.sunday_start_time.strftime("%H:%M")%>
+		<%if @schedule.unavailable_events.present?%>
+			<%@schedule.unavailable_events.each do |event|%>
+				<%if event.sunday_start_time and event.sunday_end_time%>
+					- <%=event.sunday_start_time.strftime("%H:%M")%>, <%=event.sunday_end_time.strftime("%H:%M")%>  
+				<%end%>
+			<%end%>
+		<%end%>
+		- <%=@schedule.sunday_end_time.strftime("%H:%M")%>
+	</p>
+<%end%>

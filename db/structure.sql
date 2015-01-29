@@ -81,7 +81,7 @@ ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
 
 CREATE TABLE appointment_as (
     id integer NOT NULL,
-    schedule_id integer,
+    schedule_a_id integer,
     status character varying(255),
     start_time time without time zone,
     end_time time without time zone,
@@ -110,47 +110,12 @@ ALTER SEQUENCE appointment_as_id_seq OWNED BY appointment_as.id;
 
 
 --
--- Name: appointments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE appointments (
-    id integer NOT NULL,
-    user_account_id integer,
-    schedule_id integer,
-    appointment_date date,
-    slot_id integer,
-    status character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: appointments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE appointments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: appointments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE appointments_id_seq OWNED BY appointments.id;
-
-
---
 -- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE events (
     id integer NOT NULL,
-    schedule_id integer,
+    schedule_a_id integer,
     event_type character varying(255),
     start_time time without time zone,
     end_time time without time zone,
@@ -510,13 +475,6 @@ ALTER TABLE ONLY appointment_as ALTER COLUMN id SET DEFAULT nextval('appointment
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY appointments ALTER COLUMN id SET DEFAULT nextval('appointments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
@@ -590,14 +548,6 @@ ALTER TABLE ONLY accounts
 
 ALTER TABLE ONLY appointment_as
     ADD CONSTRAINT appointment_as_pkey PRIMARY KEY (id);
-
-
---
--- Name: appointments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY appointments
-    ADD CONSTRAINT appointments_pkey PRIMARY KEY (id);
 
 
 --
@@ -746,4 +696,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150128124425');
 INSERT INTO schema_migrations (version) VALUES ('20150128124430');
 
 INSERT INTO schema_migrations (version) VALUES ('3');
+
+INSERT INTO schema_migrations (version) VALUES ('4');
+
+INSERT INTO schema_migrations (version) VALUES ('5');
 
