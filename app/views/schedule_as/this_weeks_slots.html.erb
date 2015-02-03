@@ -1,0 +1,15 @@
+<h4>This Week's Schedule (Slot Wise) for <%=@user.name%></h4>
+<br>
+<%@days_of_the_week.each do |date|%>
+	<p>
+		<strong><%=date.strftime("%A, %d %b %Y")%></strong>
+		<br>
+		<%if @schedule.available_slots_on(date).present?%>
+			<%@schedule.available_slots_on(date).each do |slot|%>
+				<%=slot%>
+			<%end%>
+		<%else%>
+			Not Available
+		<%end%>
+	</p>
+<%end%>

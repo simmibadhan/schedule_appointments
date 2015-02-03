@@ -28,5 +28,10 @@
 				<%=link_to "This Week's Schedule", this_weeks_schedule_schedule_a_path(ual.schedule_a)%>
 			</p>
 		<%end%>
+		<%if ual.schedule_a.present?%>
+			<p>
+				<%=link_to "This Week's Slots", this_weeks_slots_schedule_a_path(ual.schedule_a)%>
+			</p>
+		<%end%>
 	<%end%>
 <%end%>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :schedule_as do
   	member do
       get :this_weeks_schedule
+      get :this_weeks_slots
     end
   end
   resources :schedules

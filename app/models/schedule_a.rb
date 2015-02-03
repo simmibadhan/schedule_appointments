@@ -128,4 +128,197 @@ class ScheduleA < ActiveRecord::Base
 			return false
 		end
 	end
+
+	def available_slots_on(date)
+		day = date.strftime("%A").downcase
+		slots = Slot.all
+		available_slots = []
+		unavailable_slots = []
+		case day
+		when "monday"
+			if (self.monday_start_time.present? and self.monday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.monday_start_time.strftime("%H:%M")
+					end_time = self.monday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.monday_start_time and event.monday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.monday_start_time.strftime("%H:%M")
+							end_time = event.monday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "tuesday"
+			if (self.tuesday_start_time.present? and self.tuesday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.tuesday_start_time.strftime("%H:%M")
+					end_time = self.tuesday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.tuesday_start_time and event.tuesday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.tuesday_start_time.strftime("%H:%M")
+							end_time = event.tuesday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "wednesday"
+			if (self.wednesday_start_time.present? and self.wednesday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.wednesday_start_time.strftime("%H:%M")
+					end_time = self.wednesday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.wednesday_start_time and event.wednesday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.wednesday_start_time.strftime("%H:%M")
+							end_time = event.wednesday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "thursday"
+			if (self.thursday_start_time.present? and self.thursday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.thursday_start_time.strftime("%H:%M")
+					end_time = self.thursday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.thursday_start_time and event.thursday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.thursday_start_time.strftime("%H:%M")
+							end_time = event.thursday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "friday"
+			if (self.friday_start_time.present? and self.friday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.friday_start_time.strftime("%H:%M")
+					end_time = self.friday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.friday_start_time and event.friday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.friday_start_time.strftime("%H:%M")
+							end_time = event.friday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "saturday"
+			if (self.saturday_start_time.present? and self.saturday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.saturday_start_time.strftime("%H:%M")
+					end_time = self.saturday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.saturday_start_time and event.saturday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.saturday_start_time.strftime("%H:%M")
+							end_time = event.saturday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		when "sunday"
+			if (self.sunday_start_time.present? and self.sunday_end_time.present?)
+				slots.each do |slot|
+					slot_time = slot.start_time.strftime("%H:%M")
+					start_time = self.sunday_start_time.strftime("%H:%M")
+					end_time = self.sunday_end_time.strftime("%H:%M")
+					if (slot_time >= start_time and slot_time < end_time)
+						available_slots << slot_time
+					end
+				end
+			end
+			if self.unavailable_events.present?
+				self.unavailable_events.each do |event|
+					if event.sunday_start_time and event.sunday_end_time
+						slots.each do |slot|
+							slot_time = slot.start_time.strftime("%H:%M")
+							start_time = event.sunday_start_time.strftime("%H:%M")
+							end_time = event.sunday_end_time.strftime("%H:%M")
+							if (slot_time >= start_time and slot_time < end_time)
+								unavailable_slots << slot_time
+							end		
+						end
+					end
+				end
+			end
+			return available_slots - unavailable_slots
+		else
+			return false
+		end
+	end
 end
