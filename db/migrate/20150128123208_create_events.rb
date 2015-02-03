@@ -3,8 +3,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
     	t.integer :schedule_a_id
     	t.string :event_type
-    	t.time :start_time
-    	t.time :end_time
+    	t.datetime :start_time
+    	t.datetime :end_time
     	t.time :monday_start_time
     	t.time :monday_end_time
     	t.time :tuesday_start_time

@@ -117,8 +117,8 @@ CREATE TABLE events (
     id integer NOT NULL,
     schedule_a_id integer,
     event_type character varying(255),
-    start_time time without time zone,
-    end_time time without time zone,
+    start_time timestamp without time zone,
+    end_time timestamp without time zone,
     monday_start_time time without time zone,
     monday_end_time time without time zone,
     tuesday_start_time time without time zone,
@@ -700,4 +700,10 @@ INSERT INTO schema_migrations (version) VALUES ('3');
 INSERT INTO schema_migrations (version) VALUES ('4');
 
 INSERT INTO schema_migrations (version) VALUES ('5');
+
+INSERT INTO schema_migrations (version) VALUES ('6');
+
+INSERT INTO schema_migrations (version) VALUES ('7');
+
+INSERT INTO schema_migrations (version) VALUES ('8');
 
