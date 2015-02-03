@@ -18,9 +18,14 @@
 				<%=link_to "Schedule V1.1", schedule_a_path(ual.schedule_a)%>
 			</p>
 		<%end%>
-		<%if ual.schedule.present?%>
+		<%#if ual.schedule.present?%>
 			<p>
-				<%=link_to "Schedule V1.2", schedule_path(ual.schedule)%>
+				<%#=link_to "Schedule V1.2", schedule_path(ual.schedule)%>
+			</p>
+		<%#end%>
+		<%if ual.schedule_a.present?%>
+			<p>
+				<%=link_to "This Week's Schedule", this_weeks_schedule_schedule_a_path(ual.schedule_a)%>
 			</p>
 		<%end%>
 	<%end%>

@@ -1,0 +1,13 @@
+<br>
+<%@days_of_the_week.each do |date|%>
+	<p>
+		<strong><%=date.strftime("%A, %d %b %Y")%></strong>
+		<br>
+		<%if @schedule.is_available_on(date)%>
+			Available: 
+			<%=@schedule.schedule_on(date)%>
+		<%else%>
+			Not Available
+		<%end%>
+	</p>
+<%end%>
